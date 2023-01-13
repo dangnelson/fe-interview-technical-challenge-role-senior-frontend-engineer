@@ -3,7 +3,7 @@ import TableDemoView from './components/TableDemoView';
 import HomeView from './components/HomeView';
 import RedirectView from './components/RedirectView';
 import YouCanDoItView from './components/YouCanDoItView';
-import PolicyholdersView from './components/PolicyholdersViewRename';
+import PolicyholdersView from './components/PolicyholdersView';
 import Layout from './components/Layout';
 import { useState } from 'react';
 import Modal from './components/Modal';
