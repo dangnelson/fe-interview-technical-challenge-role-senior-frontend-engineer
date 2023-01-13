@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import InfoTable from '../InfoTable';
+import AddPolicyholder from './AddPolicyholder';
 
 function PolicyholdersView() {
   const [policyholder, setPolicyholder] = useState<
@@ -75,9 +76,12 @@ function PolicyholdersView() {
   }, []);
 
   return (
-    <Box>
-      <InfoTable header="Policyholders" rows={policyholder} />
-    </Box>
+    <>
+      <Box sx={{ marginBottom: 2 }}>
+        <InfoTable header="Policyholders" rows={policyholder} />
+      </Box>
+      <AddPolicyholder />
+    </>
   );
 }
 
