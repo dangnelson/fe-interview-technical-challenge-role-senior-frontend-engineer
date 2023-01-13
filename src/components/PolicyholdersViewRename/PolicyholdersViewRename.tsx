@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import InfoTable from '../InfoTable';
 
 function PolicyholdersView() {
-  const [policyHolder, setPolicyHolder] = useState<
+  const [policyholder, setPolicyholder] = useState<
     Array<{
       key: string;
       value: string | number;
@@ -14,7 +14,7 @@ function PolicyholdersView() {
     const sessionData = sessionStorage.getItem('policyHolders');
 
     if (sessionData) {
-      setPolicyHolder(JSON.parse(sessionData));
+      setPolicyholder(JSON.parse(sessionData));
     } else {
       const fetchData = async () => {
         try {
@@ -22,8 +22,8 @@ function PolicyholdersView() {
             'https://fe-interview-technical-challenge-api-git-main-sure.vercel.app/api/policyholders'
           );
           const json = await response.json();
-          const firstResponse = json.policyHolders[0];
-          const newPolicyHolder = [
+          const firstResponse = json.policyHolders[0]; // Should be re-named to policyholders (all lowercase) to match UI
+          const newPolicyholder = [
             {
               key: 'Name',
               value: firstResponse.name,
@@ -55,11 +55,11 @@ function PolicyholdersView() {
             },
           ];
 
-          setPolicyHolder(newPolicyHolder);
+          setPolicyholder(newPolicyholder);
 
           sessionStorage.setItem(
-            'policyHolders',
-            JSON.stringify(newPolicyHolder)
+            'policyholders',
+            JSON.stringify(newPolicyholder)
           );
         } catch (error) {
           console.log('error', error);
@@ -70,13 +70,13 @@ function PolicyholdersView() {
     }
 
     window.onunload = function () {
-      sessionStorage.removeItem('policyHolders');
+      sessionStorage.removeItem('policyholders');
     };
   }, []);
 
   return (
     <Box>
-      <InfoTable header="Policy Holder" rows={policyHolder} />
+      <InfoTable header="Policyholders" rows={policyholder} />
     </Box>
   );
 }
