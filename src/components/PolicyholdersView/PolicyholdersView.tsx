@@ -54,6 +54,7 @@ function PolicyholdersView() {
               <InfoTable
                 header={'Policyholder ' + (i + 1)}
                 rows={convertPolicyholder(policyholder)}
+                data-testid={'policyholder_table_' + (i + 1)}
               />
             </Box>
           );

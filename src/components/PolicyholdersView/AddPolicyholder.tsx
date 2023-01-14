@@ -35,7 +35,11 @@ function AddPolicyholder({ onClick }: { onClick: Function }) {
 
   return (
     <Box sx={{ textAlign: 'center' }}>
-      <Button onClick={postPolicyholder} variant="contained">
+      <Button
+        onClick={postPolicyholder}
+        data-testid="add_policyholder"
+        variant="contained"
+      >
         <AddIcon style={{ marginRight: 5 }} />
         Add a policyholder
       </Button>
