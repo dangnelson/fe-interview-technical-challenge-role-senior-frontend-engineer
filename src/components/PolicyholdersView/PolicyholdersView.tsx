@@ -103,6 +103,7 @@ function PolicyholdersView() {
           <li>
             Add documentation to the README for how to run the Cypress tests.
           </li>
+          <li>Rename the NavBar component to SideBar.</li>
         </ul>
       </div>
     </>
