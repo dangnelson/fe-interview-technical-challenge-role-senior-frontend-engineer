@@ -99,7 +99,10 @@ function PolicyholdersView() {
             spelling.
           </li>
           <li>Ensure accessiblity standards are met if required.</li>
-          <li>Run Jest & Cypress tests to ensure they pass</li>
+          <li>Run Jest & Cypress tests to ensure they pass.</li>
+          <li>
+            Add documentation to the README for how to run the Cypress tests.
+          </li>
         </ul>
       </div>
     </>
