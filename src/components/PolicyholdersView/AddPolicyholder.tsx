@@ -1,4 +1,5 @@
 import { Box, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
 function AddPolicyholder({ onClick }: { onClick: Function }) {
   function postPolicyholder() {
@@ -35,6 +36,7 @@ function AddPolicyholder({ onClick }: { onClick: Function }) {
   return (
     <Box sx={{ textAlign: 'center' }}>
       <Button onClick={postPolicyholder} variant="contained">
+        <AddIcon style={{ marginRight: 5 }} />
         Add a policyholder
       </Button>
     </Box>

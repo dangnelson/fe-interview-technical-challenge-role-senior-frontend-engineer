@@ -60,6 +60,48 @@ function PolicyholdersView() {
         })}
 
       <AddPolicyholder onClick={addPolicyholder} />
+      <div style={{ marginTop: 40, marginBottom: 40 }}>
+        <p style={{ fontStyle: 'italic' }}>
+          Prompt: Add some text at the bottom of PolicyHoldersView describing
+          any remaining work you would do in this repo before shipping your code
+          to a "production" environment.
+        </p>
+
+        <ul>
+          <li>
+            Ensure it's place and value for the user within the current app
+            ecosystem.
+          </li>
+          <li>Add authentication.</li>
+          <li>Add mobile support.</li>
+          <li>Setup a CI/CD pipeline for deployment.</li>
+          <li>Add a component library with Storybook.</li>
+          <li>Setup a CI/CD pipeline for deployment.</li>
+          <li>
+            Ensure there's no code in shared component libraries that's
+            redudant.
+          </li>
+          <li>
+            Add variable constants for colors & other common styles used acoss
+            the app.
+          </li>
+          <li>Add Jest test coverage for the new functionality.</li>
+          <li>
+            Add better error handling for API requests with alerts for the user.
+          </li>
+          <li>
+            Add meta tags, open graph tags / images, and h1 titles and
+            descriptions for each page which is indexable / crawlable.
+          </li>
+          <li>
+            Add a ticket for the API to be fixed to use all lower case
+            "Policyholders" to match the UI, rather than "PolicyHolders"
+            spelling.
+          </li>
+          <li>Ensure accessiblity standards are met if required.</li>
+          <li>Run Jest & Cypress tests to ensure they pass</li>
+        </ul>
+      </div>
     </>
   );
 }
