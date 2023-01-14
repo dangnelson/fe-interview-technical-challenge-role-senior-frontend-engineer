@@ -2,20 +2,19 @@ import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import InfoTable from '../InfoTable';
 import AddPolicyholder from './AddPolicyholder';
+import PolicyHolderInt from './Policyholder.interface';
+import convertPolicyholder from './convertPolicyholder';
 
 function PolicyholdersView() {
-  const [policyholder, setPolicyholder] = useState<
-    Array<{
-      key: string;
-      value: string | number;
-    }>
-  >([]);
+  const [policyholders, setPolicyholders] = useState<Array<PolicyHolderInt>>(
+    []
+  );
 
   useEffect(() => {
     const sessionData = sessionStorage.getItem('policyHolders');
 
     if (sessionData) {
-      setPolicyholder(JSON.parse(sessionData));
+      setPolicyholders(JSON.parse(sessionData));
     } else {
       const fetchData = async () => {
         try {
@@ -24,43 +23,10 @@ function PolicyholdersView() {
           );
           const json = await response.json();
           const firstResponse = json.policyHolders[0]; // Should be re-named to policyholders (all lowercase) to match UI
-          const newPolicyholder = [
-            {
-              key: 'Name',
-              value: firstResponse.name,
-            },
-            {
-              key: 'Age',
-              value: firstResponse.age,
-            },
-            {
-              key: 'Address',
-              value:
-                firstResponse.address.line1 +
-                ' ' +
-                firstResponse.address.line2 +
-                ', ' +
-                firstResponse.address.city +
-                ', ' +
-                firstResponse.address.state +
-                ' ' +
-                firstResponse.address.postalCode,
-            },
-            {
-              key: 'Phone Number',
-              value: firstResponse.phoneNumber,
-            },
-            {
-              key: 'Primary Policyholder?',
-              value: firstResponse.isPrimary ? 'Yes' : 'No',
-            },
-          ];
-
-          setPolicyholder(newPolicyholder);
-
+          setPolicyholders([firstResponse]);
           sessionStorage.setItem(
             'policyholders',
-            JSON.stringify(newPolicyholder)
+            JSON.stringify(firstResponse)
           );
         } catch (error) {
           console.log('error', error);
@@ -75,12 +41,25 @@ function PolicyholdersView() {
     };
   }, []);
 
+  function addPolicyholder(newPolicyholders: Array<PolicyHolderInt>) {
+    setPolicyholders(newPolicyholders);
+  }
+
   return (
     <>
-      <Box sx={{ marginBottom: 2 }}>
-        <InfoTable header="Policyholders" rows={policyholder} />
-      </Box>
-      <AddPolicyholder />
+      {policyholders.length !== 0 &&
+        policyholders.map((policyholder: PolicyHolderInt, i: number) => {
+          return (
+            <Box sx={{ marginBottom: 2 }} key={i}>
+              <InfoTable
+                header={'Policyholder ' + (i + 1)}
+                rows={convertPolicyholder(policyholder)}
+              />
+            </Box>
+          );
+        })}
+
+      <AddPolicyholder onClick={addPolicyholder} />
     </>
   );
 }

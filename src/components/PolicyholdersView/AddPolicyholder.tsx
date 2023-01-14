@@ -1,6 +1,6 @@
 import { Box, Button } from '@mui/material';
 
-function AddPolicyholder() {
+function AddPolicyholder({ onClick }: { onClick: Function }) {
   function postPolicyholder() {
     const fetchData = async () => {
       try {
@@ -23,7 +23,7 @@ function AddPolicyholder() {
           }
         );
         const json = await response.json();
-        console.log(json);
+        onClick(json.policyHolders);
       } catch (error) {
         console.log('error', error);
       }
